@@ -3,7 +3,6 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
 const Hotels = (() => {
-
   const hotels = [
     ['Hilton', 243, 3], ['Sheraton', 278, 4], ['Ramada', 197, 2], ['Marriott', 310, 4], ['Holiday Inn', 162, 2],
   ];
