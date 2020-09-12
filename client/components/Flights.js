@@ -5,15 +5,15 @@ import axios from 'axios';
 
 const Flights = ({ currentUser, currentTrip }) => {
   const [flightData, setFlightData] = useState([]);
-  const [trip, setTrip] = useState({});
+  // const [trip, setTrip] = useState({});
 
   const handleChange = (response) => {
-    setTrip(response);
-  };
-
-  const handleChangeFlight = (response) => {
     setFlightData(response);
   };
+
+  // const handleChangeFlight = (response) => {
+  //   setFlightData(response);
+  // };
 
   useEffect(() => {
     axios
@@ -31,14 +31,14 @@ const Flights = ({ currentUser, currentTrip }) => {
         handleChange(res.data);
       });
 
-    axios
-      .post('/getFlights', { trip }, () => {})
-      .then((res) => {
-        // console.info(response);
-        console.info(res);
-        handleChangeFlight(res.data);
-        // handleChange(response.data);
-      });
+    // axios
+    //   .post('/getFlights', { trip }, () => {})
+    //   .then((res) => {
+    //     // console.info(response);
+    //     console.info(res);
+    //     handleChangeFlight(res.data);
+    //     // handleChange(response.data);
+    //   });
   }, []);
 
   // const onClickShowMeFlight = () => {

@@ -431,19 +431,20 @@ const inviteSelectedUser = async (req, res) => {
     .catch((err) => console.warn(err));
   res.send(selected);
 };
-
-const getFlights = async (req, res) => {
-  const flightsInfo = await getFlightsInfo(req, res);
-  res.send(flightsInfo);
-};
-
-const getFullTrip = async (req, res) => {
-  console.info(req, 'REQ');
+const getFullTrip = async (req) => {
+  // console.info(req, 'REQ');
   const trip = await Trip.findOne({
     where: { id: req.body.id },
   });
-  console.info('trip found', trip);
-  res.send(trip);
+  // console.info('trip found', trip);
+  // res.send(trip);
+  return trip;
+};
+
+const getFlights = async (req, res) => {
+  const trip = await getFullTrip(req);
+  const flightsInfo = getFlightsInfo(trip);
+  res.send(flightsInfo);
 };
 
 module.exports = {

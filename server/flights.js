@@ -4,10 +4,15 @@ const { API_KEY, API_SECRET } = require('../config');
 let flightData;
 let dictionary;
 const array = [];
-const getFlightsInfo = async () => {
+const getFlightsInfo = async (trip) => {
   // input: object with trip ID, destination
   // output: array of objects - flight info
   // array of objects - destinations: airport codes
+  console.info(trip.dataValues, 'TRIP HErE');
+  // const departure = trip.dataValues.departure_city;
+  // const { destination } = trip.dataValues;
+  const start = trip.dataValues.start_date;
+  const end = trip.dataValues.end_date;
 
   const amadeus = new Amadeus({
     clientId: API_KEY,
@@ -18,8 +23,8 @@ const getFlightsInfo = async () => {
     .get({
       originLocationCode: 'MSY',
       destinationLocationCode: 'LAX',
-      departureDate: '2020-09-20',
-      returnDate: '2020-09-28',
+      departureDate: `${start}`,
+      returnDate: `${end}`,
       adults: '1',
       max: '5',
     })
